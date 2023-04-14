@@ -1,4 +1,4 @@
-# Ubiquity Dollar
+# Ubiquity Dollar!
 Introducing the flagship product of [Ubiquity DAO](https://ubq.fi/). The Ubiquity Dollar (uAD) is a collateralized stablecoin.
 - The deployed smart contracts can be found in the [docs](https://dao.ubq.fi/smart-contracts).
 - The source code for those are archived [here](https://github.com/ubiquity/uad-contracts).
