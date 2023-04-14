@@ -36,8 +36,8 @@ jobs:
 
       - name: Print coverages
         run: |
-          echo "Development branch coverage: " $(steps.coverage-development.outputs.COVERAGE)
-          echo "PR branch coverage: " $(steps.coverage-pr.outputs.COVERAGE)
+          echo Development branch coverage: ${{ steps.coverage-development.outputs.COVERAGE }}
+          echo PR branch coverage: ${{ steps.coverage-pr.outputs.COVERAGE }}
 
       - name: Compare coverages
         if: ${{ steps.coverage-development.outputs.COVERAGE > steps.coverage-pr.outputs.COVERAGE }}
