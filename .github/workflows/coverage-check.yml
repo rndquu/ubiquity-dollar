@@ -1,0 +1,44 @@
+name: Check Test Coverage
+
+on:
+  pull_request
+  workflow_dispatch
+
+jobs:
+  test-coverage:
+    name: Check Test Coverage
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Setup Foundry
+        uses: onbjerg/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Checkout development branch
+        uses: actions/checkout@v3
+        with:
+          ref: development
+
+      - name: Get development branch coverage
+        id: coverage-development
+        run: |
+          cd packages/contracts 
+          echo COVERAGE=$(forge coverage | tail -n 1 | awk '{print $4}' | tr -d '%') >> $GITHUB_OUTPUT
+
+      - name: Checkout PR branch
+        uses: actions/checkout@v3
+
+      - name: Get PR branch coverage
+        id: coverage-pr
+        run: |
+          cd packages/contracts 
+          echo COVERAGE=$(forge coverage | tail -n 1 | awk '{print $4}' | tr -d '%') >> $GITHUB_OUTPUT
+
+      - name: Print coverages
+        run: |
+          echo "Development branch coverage: " $(steps.coverage-development.outputs.COVERAGE)
+          echo "PR branch coverage: " $(steps.coverage-pr.outputs.COVERAGE)
+
+      - name: Compare coverages
+        if: ${{ steps.coverage-development.outputs.COVERAGE > steps.coverage-pr.outputs.COVERAGE }}
+        run: exit 1
