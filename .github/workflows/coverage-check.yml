@@ -36,7 +36,7 @@ jobs:
           forge coverage --report lcov
 
       - name: Coveralls GitHub Action
-        uses: coverallsapp/github-action@v1
+        uses: coverallsapp/github-action@v2
         with:
           path-to-lcov: packages/contracts/lcov.info
           debug: true
