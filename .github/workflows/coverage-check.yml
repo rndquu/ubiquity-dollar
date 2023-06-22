@@ -118,3 +118,8 @@ jobs:
         run: |
           echo "Error: test coverage decreased"
           exit 1
+
+      - name: Coveralls GitHub Action
+        uses: coverallsapp/github-action@v1
+        with:
+          file: filtered-lcov.info
