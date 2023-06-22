@@ -122,4 +122,4 @@ jobs:
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@v1
         with:
-          file: filtered-lcov.info
+          path-to-lcov: filtered-lcov.info
