@@ -125,5 +125,4 @@ jobs:
         uses: coverallsapp/github-action@v1
         with:
           path-to-lcov: packages/contracts/lcov.info
-        env:
-          NODE_COVERALLS_DEBUG: 1
+          debug: true
