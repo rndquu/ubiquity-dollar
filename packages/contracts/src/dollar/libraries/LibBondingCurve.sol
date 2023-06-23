@@ -202,7 +202,7 @@ library LibBondingCurve {
         uint256 _connectorWeight,
         uint256 _baseX,
         uint256 _baseY
-    ) internal pure returns (uint256) {
+    ) internal view returns (uint256) {
         // (MAX_WEIGHT/reserveWeight -1)
         bytes16 _one = uintToBytes16(ONE);
 

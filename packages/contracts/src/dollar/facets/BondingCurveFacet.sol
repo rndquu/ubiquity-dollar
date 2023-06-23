@@ -98,7 +98,7 @@ contract BondingCurveFacet is Modifiers, IBondingCurve {
         uint256 _connectorWeight,
         uint256 _baseX,
         uint256 _baseY
-    ) external pure returns (uint256) {
+    ) external view returns (uint256) {
         return
             LibBondingCurve.purchaseTargetAmountFromZero(
                 _tokensDeposited,
