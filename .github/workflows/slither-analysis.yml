@@ -9,15 +9,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Set up Python 3.11
+      - name: Set up Python 3.10
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: "3.10"
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
         with:
           version: nightly
+
+      - name: Install solc-select
+        run: pip3 install solc-select
+
+      - name: Install solc 0.8.19
+        run: |
+          solc-select install 0.8.19
+          solc-select use 0.8.19
 
       - name: Install Slither
         run: pip3 install slither-analyzer
