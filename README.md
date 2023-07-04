@@ -6,7 +6,7 @@ Introducing the flagship product of [Ubiquity DAO](https://ubq.fi/). The Ubiquit
 - The source code for those are archived [here](https://github.com/ubiquity/uad-contracts).
 
 ![Ubiquity Dollar Logo](https://user-images.githubusercontent.com/4975670/153777249-527395c0-0c52-4731-8b0a-77b7885fafda.png)
-## Contributing
+## Contributing!
 - We welcome everybody to participate in improving the codebase.
 - We offer financial incentives for solved issues.
 - Please learn how to contribute via the DevPool [here](https://dao.ubq.fi/devpool).
