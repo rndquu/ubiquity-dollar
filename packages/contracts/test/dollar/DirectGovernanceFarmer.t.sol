@@ -23,7 +23,7 @@ contract DirectGovernanceFarmerHarness is DirectGovernanceFarmer {
 }
 
 contract DirectGovernanceFarmerTest is LocalTestHelper {
-    // DAI
+    // DAI !
     MockERC20 token0;
     // USDC
     MockERC20 token1;
