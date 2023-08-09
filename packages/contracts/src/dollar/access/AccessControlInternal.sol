@@ -28,6 +28,7 @@ abstract contract AccessControlInternal {
 
     /**
      * @notice Checks whether role is assigned to account
+     * @notice Checks whether role is assigned to account 2
      * @param role Role to check
      * @param account Account address to check
      * @return Whether role is assigned to account
