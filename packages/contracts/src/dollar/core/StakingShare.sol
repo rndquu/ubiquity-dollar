@@ -31,11 +31,11 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
     /// @notice Mapping of stake id to stake info
     mapping(uint256 => Stake) private _stakes;
 
-    /// @notice Base token URI
-    string private _baseURI;
-
     /// @notice Total LP amount staked
     uint256 private _totalLP;
+
+    /// @notice Base token URI
+    bytes private _baseURI;
 
     // ----------- Modifiers -----------
 
@@ -271,15 +271,15 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      */
     function setBaseUri(string memory newUri) external onlyMinter {
         _setBaseURI(newUri);
-        _baseURI = newUri;
+        _baseURI = bytes(newUri);
     }
 
     /**
      * @notice Returns base URI for all token types
      * @return Base URI string
      */
-    function getBaseUri() external view returns (string memory) {
-        return _baseURI;
+    function getBaseUri() external view returns (bytes memory) {
+        return bytes(_baseURI);
     }
 
     /// @notice Allows an admin to upgrade to another implementation contract
