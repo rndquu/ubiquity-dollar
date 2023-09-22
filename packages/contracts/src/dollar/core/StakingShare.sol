@@ -32,10 +32,10 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
     mapping(uint256 => Stake) private _stakes;
 
     /// @notice Total LP amount staked
-    // uint256 private _totalLP;
+    uint256 private _totalLP;
 
     /// @notice Base token URI
-    string private _baseURI;
+    // string private _baseURI;
 
     // ----------- Modifiers -----------
 
@@ -96,13 +96,13 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
     ) external onlyMinter whenNotPaused {
         Stake storage stake = _stakes[_stakeId];
         uint256 curLpAmount = stake.lpAmount;
-        // if (curLpAmount > _lpAmount) {
-        //     // we are removing LP
-        //     _totalLP -= curLpAmount - _lpAmount;
-        // } else {
-        //     // we are adding LP
-        //     _totalLP += _lpAmount - curLpAmount;
-        // }
+        if (curLpAmount > _lpAmount) {
+            // we are removing LP
+            _totalLP -= curLpAmount - _lpAmount;
+        } else {
+            // we are adding LP
+            _totalLP += _lpAmount - curLpAmount;
+        }
         stake.lpAmount = _lpAmount;
         stake.lpRewardDebt = _lpRewardDebt;
         stake.endBlock = _endBlock;
@@ -133,7 +133,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
         _stake.lpRewardDebt = lpRewardDebt;
         _stake.creationBlock = block.number;
         _stake.endBlock = endBlock;
-        //_totalLP += lpDeposited;
+        _totalLP += lpDeposited;
     }
 
     /**
@@ -164,8 +164,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      * @return Total amount of LP tokens deposited
      */
     function totalLP() public view virtual returns (uint256) {
-        // return _totalLP;
-        return 0;
+        return _totalLP;
     }
 
     /**
@@ -272,7 +271,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      */
     function setBaseUri(string memory newUri) external onlyMinter {
         _setBaseURI(newUri);
-        _baseURI = newUri;
+        // _baseURI = newUri;
     }
 
     /**
@@ -280,7 +279,8 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      * @return Base URI string
      */
     function getBaseUri() external view returns (string memory) {
-        return _baseURI;
+        // return _baseURI;
+        return "";
     }
 
     /// @notice Allows an admin to upgrade to another implementation contract
