@@ -17,6 +17,8 @@ contract UbiquityDollarToken is ERC20Ubiquity {
      */
     mapping(address => address) public incentiveContract;
 
+    address public myAddress1 = address(1);
+
     /// @notice Emitted on setting an incentive contract for an account
     event IncentiveContractUpdate(
         address indexed _incentivized,
