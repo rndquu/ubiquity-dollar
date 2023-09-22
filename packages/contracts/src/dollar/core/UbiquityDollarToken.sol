@@ -11,6 +11,8 @@ import "../libraries/Constants.sol";
  * @notice Ubiquity Dollar token contract
  */
 contract UbiquityDollarToken is ERC20Ubiquity {
+    address public myAddress0 = address(0);
+
     /**
      * @notice Mapping of account and incentive contract address
      * @dev Address is 0 if there is no incentive contract for the account
