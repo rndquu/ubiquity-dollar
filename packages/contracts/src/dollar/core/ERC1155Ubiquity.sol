@@ -35,6 +35,8 @@ contract ERC1155Ubiquity is
     /// @notice Total supply among all token ids
     uint256 public totalSupply;
 
+    address public myAddress1 = address(1);
+
     // ----------- Modifiers -----------
 
     /// @notice Modifier checks that the method is called by a user with the "Governance minter" role
