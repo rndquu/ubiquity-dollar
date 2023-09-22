@@ -11,7 +11,7 @@ import "../interfaces/IAccessControl.sol";
 import "../libraries/Constants.sol";
 
 /// @notice Contract representing a staking share in the form of ERC1155 token
-contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
+contract StakingShare is ERC1155URIStorageUpgradeable, ERC1155Ubiquity {
     using SafeAddArray for uint256[];
 
     /// @notice Stake struct
@@ -35,7 +35,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
     uint256 private _totalLP;
 
     /// @notice Base token URI
-    // string private _baseURI;
+    string private _baseURI;
 
     // ----------- Modifiers -----------
 
@@ -271,7 +271,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      */
     function setBaseUri(string memory newUri) external onlyMinter {
         _setBaseURI(newUri);
-        // _baseURI = newUri;
+        _baseURI = newUri;
     }
 
     /**
@@ -279,8 +279,7 @@ contract StakingShare is ERC1155Ubiquity, ERC1155URIStorageUpgradeable {
      * @return Base URI string
      */
     function getBaseUri() external view returns (string memory) {
-        // return _baseURI;
-        return "";
+        return _baseURI;
     }
 
     /// @notice Allows an admin to upgrade to another implementation contract
