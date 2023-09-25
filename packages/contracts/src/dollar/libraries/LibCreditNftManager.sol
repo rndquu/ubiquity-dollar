@@ -50,9 +50,9 @@ library LibCreditNftManager {
         //the amount of dollars we minted this cycle, so we can calculate delta.
         // should be reset to 0 when cycle ends
         uint256 dollarsMintedThisCycle;
-        uint256 blockHeightDebt;
+        //uint256 blockHeightDebt;
         uint256 creditNftLengthBlocks;
-        uint128 expiredCreditNftConversionRate;
+        uint256 expiredCreditNftConversionRate;
         bool debtCycle;
     }
 
@@ -85,7 +85,7 @@ library LibCreditNftManager {
      * Governance tokens using `rate` conversion rate
      * @param rate Credit NFT to Governance tokens conversion rate
      */
-    function setExpiredCreditNftConversionRate(uint128 rate) internal {
+    function setExpiredCreditNftConversionRate(uint256 rate) internal {
         emit ExpiredCreditNftConversionRateChanged(
             rate,
             creditNftStorage().expiredCreditNftConversionRate
@@ -140,7 +140,7 @@ library LibCreditNftManager {
         // and set the blockHeight Debt
         if (!cs.debtCycle) {
             cs.debtCycle = true;
-            cs.blockHeightDebt = block.number;
+            //cs.blockHeightDebt = block.number;
             cs.dollarsMintedThisCycle = 0;
         }
 
@@ -181,13 +181,13 @@ library LibCreditNftManager {
         if (!creditNftStorage().debtCycle) {
             CreditNftManagerData storage cs = creditNftStorage();
             cs.debtCycle = true;
-            cs.blockHeightDebt = block.number;
+            //cs.blockHeightDebt = block.number;
             cs.dollarsMintedThisCycle = 0;
         }
 
         uint256 creditToMint = LibCreditRedemptionCalculator.getCreditAmount(
             amount,
-            creditNftStorage().blockHeightDebt
+            0 // creditNftStorage().blockHeightDebt
         );
 
         // we burn user's dollars.
@@ -224,7 +224,7 @@ library LibCreditNftManager {
         return
             LibCreditRedemptionCalculator.getCreditAmount(
                 amount,
-                creditNftStorage().blockHeightDebt
+                0 //creditNftStorage().blockHeightDebt
             );
     }
 

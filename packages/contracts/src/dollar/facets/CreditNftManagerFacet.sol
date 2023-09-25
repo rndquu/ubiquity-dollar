@@ -22,7 +22,7 @@ contract CreditNftManagerFacet is Modifiers {
      * @param rate Credit NFT to Governance tokens conversion rate
      */
     function setExpiredCreditNftConversionRate(
-        uint128 rate
+        uint256 rate
     ) external onlyCreditNftManager {
         LibCreditNftManager.setExpiredCreditNftConversionRate(rate);
     }
