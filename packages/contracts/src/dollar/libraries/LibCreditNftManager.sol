@@ -49,12 +49,12 @@ library LibCreditNftManager {
     struct CreditNftManagerData {
         //the amount of dollars we minted this cycle, so we can calculate delta.
         // should be reset to 0 when cycle ends
+        uint256 myTestVar;
         uint256 dollarsMintedThisCycle;
         uint256 blockHeightDebt;
         uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
         bool debtCycle;
-        uint256 myTestVar;
     }
 
     /**
