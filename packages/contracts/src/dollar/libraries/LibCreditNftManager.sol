@@ -51,9 +51,8 @@ library LibCreditNftManager {
         // should be reset to 0 when cycle ends
         uint256 dollarsMintedThisCycle;
         uint256 blockHeightDebt;
-        uint256 myTestVar;
-        uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
+        uint256 creditNftLengthBlocks;
         bool debtCycle;
     }
 
