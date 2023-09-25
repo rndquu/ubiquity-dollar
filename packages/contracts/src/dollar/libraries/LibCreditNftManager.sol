@@ -54,6 +54,7 @@ library LibCreditNftManager {
         uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
         bool debtCycle;
+        uint256 myTestVar;
     }
 
     /**
