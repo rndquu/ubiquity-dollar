@@ -16,6 +16,7 @@ struct AppStorage {
     address dollarMintCalculatorAddress;
     address stakingShareAddress;
     address stakingContractAddress;
+    address myAddress;
     address stableSwapMetaPoolAddress;
     address curve3PoolTokenAddress; // 3CRV
     address treasuryAddress;

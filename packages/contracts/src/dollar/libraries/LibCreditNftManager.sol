@@ -45,10 +45,6 @@ library LibCreditNftManager {
         uint256 previousCreditNftLengthBlocks
     );
 
-    struct DoNotUpgradeStruct {
-        address myAddress;
-    }
-
     /// @notice Struct used as a storage for the current library
     struct CreditNftManagerData {
         //the amount of dollars we minted this cycle, so we can calculate delta.
@@ -58,7 +54,6 @@ library LibCreditNftManager {
         uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
         bool debtCycle;
-        DoNotUpgradeStruct[] myStruct;
     }
 
     /**
