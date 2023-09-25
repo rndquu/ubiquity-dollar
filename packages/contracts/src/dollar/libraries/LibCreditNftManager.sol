@@ -45,6 +45,10 @@ library LibCreditNftManager {
         uint256 previousCreditNftLengthBlocks
     );
 
+    struct DoNotUpgradeStruct {
+        address myAddress;
+    }
+
     /// @notice Struct used as a storage for the current library
     struct CreditNftManagerData {
         //the amount of dollars we minted this cycle, so we can calculate delta.
@@ -53,7 +57,8 @@ library LibCreditNftManager {
         uint256 blockHeightDebt;
         uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
-        // bool debtCycle;
+        bool debtCycle;
+        DoNotUpgradeStruct myStruct;
     }
 
     /**
@@ -138,11 +143,11 @@ library LibCreditNftManager {
         CreditNftManagerData storage cs = creditNftStorage();
         //we are in a down cycle so reset the cycle counter
         // and set the blockHeight Debt
-        // if (!cs.debtCycle) {
-        //     cs.debtCycle = true;
-        //     cs.blockHeightDebt = block.number;
-        //     cs.dollarsMintedThisCycle = 0;
-        // }
+        if (!cs.debtCycle) {
+            cs.debtCycle = true;
+            cs.blockHeightDebt = block.number;
+            cs.dollarsMintedThisCycle = 0;
+        }
 
         uint256 creditNftToMint = LibCreditNftRedemptionCalculator
             .getCreditNftAmount(amount);
@@ -178,12 +183,12 @@ library LibCreditNftManager {
 
         //we are in a down cycle so reset the cycle counter
         // and set the blockHeight Debt
-        // if (!creditNftStorage().debtCycle) {
-        //     CreditNftManagerData storage cs = creditNftStorage();
-        //     cs.debtCycle = true;
-        //     cs.blockHeightDebt = block.number;
-        //     cs.dollarsMintedThisCycle = 0;
-        // }
+        if (!creditNftStorage().debtCycle) {
+            CreditNftManagerData storage cs = creditNftStorage();
+            cs.debtCycle = true;
+            cs.blockHeightDebt = block.number;
+            cs.dollarsMintedThisCycle = 0;
+        }
 
         uint256 creditToMint = LibCreditRedemptionCalculator.getCreditAmount(
             amount,
@@ -337,9 +342,9 @@ library LibCreditNftManager {
     ) public returns (uint256) {
         uint256 twapPrice = LibTWAPOracle.getTwapPrice();
         require(twapPrice > 1 ether, "Price must be above 1");
-        // if (creditNftStorage().debtCycle) {
-        //     creditNftStorage().debtCycle = false;
-        // }
+        if (creditNftStorage().debtCycle) {
+            creditNftStorage().debtCycle = false;
+        }
         UbiquityCreditToken creditToken = UbiquityCreditToken(
             LibAppStorage.appStorage().creditTokenAddress
         );
@@ -383,9 +388,9 @@ library LibCreditNftManager {
             twapPrice > 1 ether,
             "Price must be above 1 to redeem Credit NFT"
         );
-        // if (creditNftStorage().debtCycle) {
-        //     creditNftStorage().debtCycle = false;
-        // }
+        if (creditNftStorage().debtCycle) {
+            creditNftStorage().debtCycle = false;
+        }
         AppStorage storage store = LibAppStorage.appStorage();
         CreditNft creditNft = CreditNft(store.creditNftAddress);
 
