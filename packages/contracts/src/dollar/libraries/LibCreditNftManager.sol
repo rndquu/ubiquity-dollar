@@ -51,8 +51,8 @@ library LibCreditNftManager {
         // should be reset to 0 when cycle ends
         uint256 dollarsMintedThisCycle;
         uint256 blockHeightDebt;
-        uint256 expiredCreditNftConversionRate;
         uint256 creditNftLengthBlocks;
+        uint128 expiredCreditNftConversionRate;
         bool debtCycle;
     }
 
@@ -85,7 +85,7 @@ library LibCreditNftManager {
      * Governance tokens using `rate` conversion rate
      * @param rate Credit NFT to Governance tokens conversion rate
      */
-    function setExpiredCreditNftConversionRate(uint256 rate) internal {
+    function setExpiredCreditNftConversionRate(uint128 rate) internal {
         emit ExpiredCreditNftConversionRateChanged(
             rate,
             creditNftStorage().expiredCreditNftConversionRate
