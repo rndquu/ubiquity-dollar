@@ -58,7 +58,7 @@ library LibCreditNftManager {
         uint256 creditNftLengthBlocks;
         uint256 expiredCreditNftConversionRate;
         bool debtCycle;
-        DoNotUpgradeStruct myStruct;
+        DoNotUpgradeStruct[] myStruct;
     }
 
     /**
