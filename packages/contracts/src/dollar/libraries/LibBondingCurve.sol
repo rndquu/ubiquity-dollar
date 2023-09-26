@@ -40,6 +40,7 @@ library LibBondingCurve {
         uint256 poolBalance;
         uint256 tokenIds;
         mapping(address => uint256) share;
+        address myAddress2;
     }
 
     /**

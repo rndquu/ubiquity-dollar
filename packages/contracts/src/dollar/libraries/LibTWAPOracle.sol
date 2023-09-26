@@ -15,6 +15,7 @@ library LibTWAPOracle {
         address token1; // curve 3pool LP token address
         uint256 price0Average;
         uint256 price1Average;
+        address myAddress;
         uint256 pricesBlockTimestampLast;
         uint256[2] priceCumulativeLast;
     }

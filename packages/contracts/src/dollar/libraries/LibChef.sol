@@ -47,7 +47,7 @@ library LibChef {
         // Bonus multiplier for early Governance Token makers.
         uint256 governanceMultiplier;
         uint256 minPriceDiffToUpdateMultiplier;
-        uint256 lastPrice;
+        uint128 lastPrice;
         uint256 governanceDivider;
         // Info of each pool.
         PoolInfo pool;
@@ -336,7 +336,7 @@ library LibChef {
                 cs.governanceMultiplier,
                 currentPrice
             );
-            cs.lastPrice = currentPrice;
+            // cs.lastPrice = currentPrice;
         }
     }
 

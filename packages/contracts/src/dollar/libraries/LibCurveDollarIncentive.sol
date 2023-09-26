@@ -32,7 +32,7 @@ library LibCurveDollarIncentive {
     struct CurveDollarData {
         bool isSellPenaltyOn;
         bool isBuyIncentiveOn;
-        // mapping(address => bool) _exempt;
+        mapping(address => bool) _exempt;
     }
 
     /**
@@ -97,7 +97,7 @@ library LibCurveDollarIncentive {
      */
     function setExemptAddress(address account, bool isExempt) internal {
         CurveDollarData storage ss = curveDollarStorage();
-        // ss._exempt[account] = isExempt;
+        ss._exempt[account] = isExempt;
         emit ExemptAddressUpdate(account, isExempt);
     }
 
@@ -119,7 +119,7 @@ library LibCurveDollarIncentive {
      */
     function isExemptAddress(address account) internal view returns (bool) {
         CurveDollarData storage ss = curveDollarStorage();
-        return true; // return ss._exempt[account];
+        return ss._exempt[account];
     }
 
     /**
