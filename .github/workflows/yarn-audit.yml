@@ -18,5 +18,8 @@ jobs:
         with:
           node-version: "18.14.1"
 
+      - name: Debug
+        run: yarn --version
+
       - name: Audit
         run: yes | npx yarn-audit-fix
