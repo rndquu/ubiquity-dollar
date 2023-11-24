@@ -15,7 +15,7 @@ Introducing the flagship product of [Ubiquity DAO](https://ubq.fi/). The Ubiquit
 - Here are their [docs](https://book.getfoundry.sh/).
 - Please follow their installation guide for your OS before proceeding.
 
-### Development Setup
+### Development Setup!
 ```sh
 #!/bin/bash
 
