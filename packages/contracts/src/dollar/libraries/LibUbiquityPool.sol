@@ -110,6 +110,7 @@ library LibUbiquityPool {
         address stableUsdPriceFeedAddress;
         // threshold in seconds when chainlink's stable/USD price feed answer should be considered stale
         uint256 stableUsdPriceFeedStalenessThreshold;
+        uint test1;
     }
 
     /// @notice Struct used for detailed collateral information
