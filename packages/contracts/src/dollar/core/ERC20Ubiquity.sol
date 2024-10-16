@@ -31,6 +31,8 @@ abstract contract ERC20Ubiquity is
     /// @notice Access control interface
     IAccessControl public accessControl;
 
+    uint test1;
+
     /// @notice Emitted when tokens are burned
     event Burning(address indexed _burned, uint256 _amount);
 
