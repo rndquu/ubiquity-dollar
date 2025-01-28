@@ -28,6 +28,8 @@ abstract contract ERC20Ubiquity is
     /// @notice Token symbol
     string private _symbol;
 
+    uint my = 1;
+
     /// @notice Access control interface
     IAccessControl public accessControl;
 
