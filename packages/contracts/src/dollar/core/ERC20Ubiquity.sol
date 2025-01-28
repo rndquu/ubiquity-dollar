@@ -28,8 +28,6 @@ abstract contract ERC20Ubiquity is
     /// @notice Token symbol
     string private _symbol;
 
-    uint my = 1;
-
     /// @notice Access control interface
     IAccessControl public accessControl;
 
@@ -206,4 +204,6 @@ abstract contract ERC20Ubiquity is
 
     /// @notice Allows for future upgrades on the base contract without affecting the storage of the derived contract
     uint256[50] private __gap;
+
+    uint my = 1;
 }
